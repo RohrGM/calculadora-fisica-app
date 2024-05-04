@@ -3,6 +3,7 @@ import { Container, Divider, FormulaBase, FormulaBaseP, FormulaContent, ImageCon
 import CustomText from '../../components/custom-text';
 import InputField from '../../components/input-field';
 import { useEffect, useState } from 'react';
+import { exp, exponencial, getUnit } from '../../utils';
 
 export default function PotentialEnergy() {
     const [u, setU] = useState("");
@@ -95,7 +96,7 @@ export default function PotentialEnergy() {
                     style={{ width: 350, height: 450, resizeMode: 'stretch' }}
                 />
                 <JournalContainer>
-                    <CustomText>k = 9x10^9</CustomText>
+                    <CustomText>k = 9x10^9 N*m²/C²</CustomText>
                     <InputField
                         char={'U'}
                         value={u}
@@ -120,7 +121,7 @@ export default function PotentialEnergy() {
                         result != "" && <ResultContainer>
                             {getFormula(unknown)}
                             <ResultContent>
-                                <CustomText size={30}>{`${unknown} = ${result.toFixed(3)}`}</CustomText>
+                                <CustomText size={30}>{`${unknown} = ${exponencial(result)} ${getUnit(unknown)}`}</CustomText>
                             </ResultContent>
                         </ResultContainer>
                     }

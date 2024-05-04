@@ -4,7 +4,7 @@ import CustomText from '../../components/custom-text';
 import InputField from '../../components/input-field';
 import { useEffect, useState } from 'react';
 import { Path, Polyline, Svg } from 'react-native-svg';
-import { exp, exponencial } from '../../utils';
+import { exp, exponencial, getUnit } from '../../utils';
 
 export default function EletroField() {
     const [f, setF] = useState("");
@@ -104,7 +104,7 @@ export default function EletroField() {
                     style={{ width: 350, height: 450, resizeMode: 'stretch' }}
                 />
                 <JournalContainer>
-                    <CustomText>k = 9x10^9</CustomText>
+                    <CustomText>k = 9x10^9 N*m²/C²</CustomText>
                     <InputField
                         char={'F'}
                         value={f}
@@ -129,7 +129,7 @@ export default function EletroField() {
                         !isNaN(result) && result != "" && <ResultContainer>
                             {getFormula(unknown)}
                             <ResultContent>
-                                <CustomText size={30}>{`${unknown} = ${exponencial(result)}`}</CustomText>
+                                <CustomText size={30}>{`${unknown} = ${exponencial(result)} ${getUnit(unknown)}`}</CustomText>
                             </ResultContent>
                         </ResultContainer>
                     }

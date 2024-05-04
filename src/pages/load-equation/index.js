@@ -3,7 +3,7 @@ import { Container, Divider, FormulaBase, FormulaBaseP, FormulaContent, ImageCon
 import CustomText from '../../components/custom-text';
 import InputField from '../../components/input-field';
 import { useEffect, useState } from 'react';
-import { exp } from '../../utils';
+import { exp, exponencial, getUnit } from '../../utils';
 
 export default function LoadEquation() {
     const [e, setE] = useState("");
@@ -85,7 +85,7 @@ export default function LoadEquation() {
                     style={{ width: 350, height: 450, resizeMode: 'stretch' }}
                 />
                 <JournalContainer>
-                    <CustomText>k = 9x10^9</CustomText>
+                    <CustomText>k = 9x10^9 N*m²/C²</CustomText>
                     <InputField
                         char={'E'}
                         value={e}
@@ -105,7 +105,7 @@ export default function LoadEquation() {
                         result != "" && <ResultContainer>
                             {getFormula(unknown)}
                             <ResultContent>
-                                <CustomText size={30}>{`${unknown} = ${exp(result)}`}</CustomText>
+                                <CustomText size={30}>{`${unknown} = ${exponencial(result)} ${getUnit(unknown)}`}</CustomText>
                             </ResultContent>
                         </ResultContainer>
                     }
